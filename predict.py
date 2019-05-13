@@ -1,12 +1,16 @@
 from flask import Flask, Response, request
-from fastai import 
 import os
 app = Flask(__name__)
 
+
 def predict(path):
+    """
+    FILL ME IN
+    """
     return "Not sure :\ "
 
-@app.route('/', methods=['POST'])
+
+@app.route('/audio', methods=['POST'])
 def receieve_wav():
     blob = request.files['data']
     filename = request.form['fname']
