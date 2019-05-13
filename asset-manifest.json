@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.d6f33740.chunk.css",
-    "main.js": "/static/js/main.16e813b9.chunk.js",
-    "main.js.map": "/static/js/main.16e813b9.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.9d9a96b1.chunk.js": "/static/js/2.9d9a96b1.chunk.js",
-    "static/js/2.9d9a96b1.chunk.js.map": "/static/js/2.9d9a96b1.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.1466c0d975d88763bd557c82533d39bc.js": "/precache-manifest.1466c0d975d88763bd557c82533d39bc.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.d6f33740.chunk.css.map": "/static/css/main.d6f33740.chunk.css.map"
+    "main.css": "/pwa-audio-recorder/static/css/main.d6f33740.chunk.css",
+    "main.js": "/pwa-audio-recorder/static/js/main.49ae20c9.chunk.js",
+    "main.js.map": "/pwa-audio-recorder/static/js/main.49ae20c9.chunk.js.map",
+    "runtime~main.js": "/pwa-audio-recorder/static/js/runtime~main.09170c18.js",
+    "runtime~main.js.map": "/pwa-audio-recorder/static/js/runtime~main.09170c18.js.map",
+    "static/js/2.9d9a96b1.chunk.js": "/pwa-audio-recorder/static/js/2.9d9a96b1.chunk.js",
+    "static/js/2.9d9a96b1.chunk.js.map": "/pwa-audio-recorder/static/js/2.9d9a96b1.chunk.js.map",
+    "index.html": "/pwa-audio-recorder/index.html",
+    "precache-manifest.3c0470dd0f36d63e717de670b611f9e7.js": "/pwa-audio-recorder/precache-manifest.3c0470dd0f36d63e717de670b611f9e7.js",
+    "service-worker.js": "/pwa-audio-recorder/service-worker.js",
+    "static/css/main.d6f33740.chunk.css.map": "/pwa-audio-recorder/static/css/main.d6f33740.chunk.css.map"
   }
 }
