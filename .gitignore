@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+*.pkl
 
 # misc
 .DS_Store
