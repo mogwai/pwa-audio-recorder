@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
 import RecorderService from "./audio/RecorderService";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
+    url: "https://localhost:3000",
     recordings: []
   };
+
+  inputRef = React.createRef();
 
   componentDidMount() {
     this.recorderSrvc = new RecorderService(".");
@@ -61,20 +65,59 @@ class App extends React.Component {
 
   onNewRecording = e => {
     const recordings = this.state.recordings;
-    recordings.push(e.detail.recording);
+    const newR = e.detail.recording;
+    recordings.push(newR);
+    this.getResponse(newR);
+    this.setState({ recordings });
+  };
+
+  onChangeURL = e => {
+    const url = this.inputRef.current.value;
+    this.setState({ url });
+  };
+
+  getResponse = async recording => {
+    let message;
+    try {
+      const formData = new FormData();
+      console.log(recording);
+      formData.append("data", recording.blobUrl);
+      const res = await axios.post(this.state.url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      message = res.data;
+    } catch (e) {
+      message = e.message;
+    }
+    const recordings = this.state.recordings;
+    recordings.find(x => x.blobUrl === recording.blobUrl).responseData = message;
     this.setState({ recordings });
   };
 
   render() {
-    const { recordings, isRecording } = this.state;
-    const recording = recordings[recordings.length - 1];
+    const { recordings, isRecording, url } = this.state;
     const action = isRecording ? this.stopRecording : this.startRecording;
     const actionText = isRecording ? "Stop" : "Record";
     return (
       <div className="App">
+        <label>
+          Send to:
+          <input value={url} ref={this.inputRef} onChange={this.onChangeURL} />
+        </label>
+        <br />
         <button onClick={action}>{actionText}</button>
-        <br></br>
-        {recording && <audio src={recording.blobUrl} controls="true" />}
+        <div className="recordings">
+          {recordings.map(x => {
+            return (
+              <div key={x.blobUrl}>
+                <audio src={x.blobUrl} controls={true} />
+                <p>{x.responseData || "Retrieving Response..."}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
