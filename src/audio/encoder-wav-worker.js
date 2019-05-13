@@ -20,7 +20,6 @@ export default function () {
       data[index + 1] = sample >> 8
     }
     recorded.push(data)
-    console.log(data)
   }
 
   function dump (sampleRate) {
