@@ -18,6 +18,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage" : "http://harryblum.co.uk/pwa-audio-recorder",
   "browserslist": {
     "production": [
       ">0.2%",
