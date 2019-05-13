@@ -91,6 +91,7 @@ export default class RecorderService {
       this.destinationNode = this.audioCtx.destination;
     }
 
+    console.log(this.config.usingMediaRecorder)
     // Create web worker for doing the encoding
     if (!this.config.usingMediaRecorder) {
       if (this.config.manualEncoderId === "mp3") {
@@ -199,7 +200,7 @@ export default class RecorderService {
     this.outputGainNode.connect(this.destinationNode);
 
     if (this.config.usingMediaRecorder) {
-      this.mediaRecorder = new MediaRecorder(this.destinationNode.stream);
+      this.mediaRecorder = new MediaRecorder(this.destinationNode.stream, {mimeType:'audio/wav'});
       this.mediaRecorder.addEventListener("dataavailable", evt =>
         this._onDataAvailable(evt)
       );

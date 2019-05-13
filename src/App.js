@@ -5,7 +5,7 @@ import axios from "axios";
 
 class App extends React.Component {
   state = {
-    url: "https://localhost:3000",
+    url: "http://localhost:8080",
     recordings: []
   };
 
@@ -13,6 +13,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.recorderSrvc = new RecorderService(".");
+    this.recorderSrvc.config.usingMediaRecorder = false;
     this.recorderSrvc.em.addEventListener("recording", evt =>
       this.onNewRecording(evt)
     );
@@ -66,6 +67,7 @@ class App extends React.Component {
   onNewRecording = e => {
     const recordings = this.state.recordings;
     const newR = e.detail.recording;
+    
     recordings.push(newR);
     this.getResponse(newR);
     this.setState({ recordings });
@@ -80,8 +82,9 @@ class App extends React.Component {
     let message;
     try {
       const formData = new FormData();
-      console.log(recording);
-      formData.append("data", recording.blobUrl);
+      const blob = await fetch(recording.blobUrl).then(r => r.blob());
+      formData.append("fname", "recording");
+      formData.append("data", blob);
       const res = await axios.post(this.state.url, formData, {
         headers: {
           "Content-Type": "multipart/form-data"
