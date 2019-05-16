@@ -14,7 +14,8 @@ learn = load_learner(LEARN_PATH, LEARN_NAME)
 
 def predict(path):
     ad = AudioData.load(path)
-    learn.predict(AudioItem(ad))
+    res = learn.predict(AudioItem(ad))
+    print(res)
     """
     FILL ME IN
     """
